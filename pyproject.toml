@@ -1,0 +1,35 @@
+[project]
+name = "darc-repro"
+version = "0.1.0"
+description = "Reproduction scaffold for DARC: Disagreement-Aware Alignment via Risk-Constrained Decoding"
+requires-python = ">=3.10"
+dependencies = [
+  "accelerate>=0.33.0",
+  "alpaca-eval>=0.6.6",
+  "datasets>=2.20.0",
+  "fschat>=0.2.36",
+  "modelscope>=1.17.0",
+  "numpy>=1.26.0",
+  "pandas>=2.2.0",
+  "peft>=0.12.0",
+  "pyyaml>=6.0.0",
+  "safetensors>=0.4.4",
+  "sentencepiece>=0.2.0",
+  "torch>=2.4.0",
+  "tqdm>=4.66.0",
+  "transformers>=4.45.0",
+  "trl>=0.9.6",
+  "vllm>=0.6.3",
+]
+
+[project.scripts]
+darc-generate = "darc.generate:main"
+darc-perturb = "darc.perturb:main"
+darc-reward = "darc.reward:main"
+darc-select = "darc.select:main"
+darc-eval = "darc.evaluate:main"
+darc-export = "darc.export_results:main"
+darc-tune = "darc.tune:main"
+
+[tool.setuptools.packages.find]
+include = ["darc*"]
