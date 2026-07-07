@@ -1,7 +1,7 @@
 [project]
-name = "darc-repro"
+name = "darc-eps"
 version = "0.1.0"
-description = "Reproduction scaffold for DARC: Disagreement-Aware Alignment via Risk-Constrained Decoding"
+description = "DARC-eps risk-aware decoding and selection pipeline"
 requires-python = ">=3.10"
 dependencies = [
   "accelerate>=0.33.0",
