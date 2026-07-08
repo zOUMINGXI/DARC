@@ -16,6 +16,7 @@ Generate candidate answers:
 
 ```bash
 darc-generate \
+  --dataset mtbench \
   --model <model_path_or_id> \
   --out runs/mtbench/candidates.jsonl
 ```
@@ -24,7 +25,7 @@ Build perturbations:
 
 ```bash
 darc-perturb \
-  --input runs/mtbench/candidates.jsonl \
+  --candidates runs/mtbench/candidates.jsonl \
   --out runs/mtbench/perturbed.jsonl
 ```
 
@@ -32,8 +33,8 @@ Score original and perturbed answers:
 
 ```bash
 darc-reward \
-  --model <reward_model_path_or_id> \
-  --input runs/mtbench/perturbed.jsonl \
+  --reward-model <reward_model_path_or_id> \
+  --perturbed runs/mtbench/perturbed.jsonl \
   --out runs/mtbench/scored.jsonl
 ```
 
@@ -67,8 +68,29 @@ Export selected answers for MT-Bench style evaluation:
 darc-export \
   --selected runs/mtbench/selected.jsonl \
   --method darc_eps \
+  --model-id qwen25_7b_darc_eps \
   --out runs/mtbench/answers.jsonl
 ```
+
+## Qwen2.5-7B MT-Bench
+
+The checked recipe uses the DARC-eps clean-budget selection used for the Qwen2.5-7B-Instruct MT-Bench reproduction:
+
+```bash
+bash recipes/qwen25_7b_mtbench_darc_eps.sh
+```
+
+Default selection parameters:
+
+```text
+beta=0.75
+eps=1.5
+reward_budget=0.149
+budget_step=0.001
+reward_objective=clean
+```
+
+The script writes generated candidates, perturbations, reward scores, selected answers, proxy metrics, and MT-Bench-format answers under `runs/qwen25_7b/mtbench`. These artifacts are intentionally ignored by git.
 
 ## Selection Rule
 
