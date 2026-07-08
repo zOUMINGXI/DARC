@@ -72,12 +72,18 @@ darc-export \
   --out runs/mtbench/answers.jsonl
 ```
 
-## Qwen2.5-7B MT-Bench
+## MT-Bench Recipes
 
-The checked recipe uses the DARC-eps clean-budget selection used for the Qwen2.5-7B-Instruct MT-Bench reproduction:
+Run Qwen2.5-7B-Instruct:
 
 ```bash
 bash recipes/qwen25_7b_mtbench_darc_eps.sh
+```
+
+Run Llama-3.1-8B-Instruct:
+
+```bash
+bash recipes/llama31_8b_mtbench_darc_eps.sh
 ```
 
 Default selection parameters:
@@ -90,7 +96,7 @@ budget_step=0.001
 reward_objective=clean
 ```
 
-The script writes generated candidates, perturbations, reward scores, selected answers, proxy metrics, and MT-Bench-format answers under `runs/qwen25_7b/mtbench`. These artifacts are intentionally ignored by git.
+The scripts write generated candidates, perturbations, reward scores, selected answers, proxy metrics, and MT-Bench-format answers under `runs/<model>/mtbench`. These artifacts are intentionally ignored by git.
 
 ## Selection Rule
 
